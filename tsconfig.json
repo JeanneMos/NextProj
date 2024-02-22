@@ -5,6 +5,11 @@
       "dom.iterable",
       "esnext"
     ],
+    "target": "es5",
+    "types": [
+      "cypress",
+      "cypress-axe"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -20,9 +25,12 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true
   },
   "include": [
+    ".",
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "**/*.ts",
