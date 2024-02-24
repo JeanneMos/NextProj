@@ -27,7 +27,13 @@
       }
     ],
     "strictNullChecks": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+   "paths": {
+       "@app/*": ["./src/app*"],
+       "@config/*": ["./src/app/_config/*"],
+       "@ui/*": ["./src/app/ui-kit/*"],
+       "@helpers/*": ["./src/app/helpers/*"]
+   },
   },
   "include": [
     ".",

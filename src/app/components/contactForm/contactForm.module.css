@@ -1,0 +1,10 @@
+.buttonWrapper {
+	display: flex;
+	width: 100%;
+	margin-top: 25px;
+}
+
+.contactButton {
+	margin-right: 0;
+	margin-left: auto;
+}

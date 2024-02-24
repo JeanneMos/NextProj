@@ -1,3 +1,23 @@
 :root {
-    --spacing: 0.3125rem;
+	--spacing: 0.3125rem;
+	--font: Arial, sans-serif;
+
+	/* COLORS: */
+
+	--grey: #767676;
+	--black: #030201;
+	--white: #ebebeb;
+	--dark-purple: #151128;
+}
+
+html,
+body {
+	font-family: var(--font);
+	color: var(--black);
+	background-color: var(--white);
+}
+
+h1 {
+	font-size: 48px;
+	margin: 0;
 }
