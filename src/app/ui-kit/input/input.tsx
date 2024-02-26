@@ -10,6 +10,7 @@ interface InputProps {
 	type?: string;
 	customClass?: string;
 	name: string;
+	required?: boolean;
 }
 export function Input({
 	label,
@@ -20,10 +21,11 @@ export function Input({
 	type = "text",
 	customClass,
 	name,
+	required,
 	...rest
 }: InputProps) {
 	return (
-		<div className={`${classes.inputField} ${customClass}`}>
+		<div className={`${classes.inputField} ${customClass ? customClass : ""}`}>
 			<label htmlFor={id}>{label}</label>
 			<input
 				id={id}
@@ -32,6 +34,7 @@ export function Input({
 				type={type}
 				name={name}
 				className={classes.input}
+				required={required}
 				{...rest}
 			/>
 			<div aria-live="polite">{error && <span>{error}</span>}</div>

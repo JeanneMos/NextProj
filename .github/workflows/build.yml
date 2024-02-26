@@ -76,7 +76,41 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with npm
         run: npm run build
+      # - name: Cypress run
+      #   uses: cypress-io/github-action@v6
+      #   with:
+      #     project: ./
+      #     browser: chrome
+      #     working-directory: ./
+      #     start: npx serve@latest out
+      #     wait-on: "http://localhost:3000"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
+  # cypress-run:
+  #   name: Cypress run
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
+  #     - name: Cypress run
+  #       uses: cypress-io/github-action@v3
+  #       with:
+  #         build: npm run build
+  #         start: npm run start
+  #         wait-on: http://localhost:3000
+
+  e2e:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # in the tests below, only the environment
+      # variable 'environmentName' will be set
+      - name: Cypress run with env
+        uses: ./
+        with:
+          working-directory: /
+          spec: cypress/e2e/without-env.cy.js
