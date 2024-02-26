@@ -3,6 +3,11 @@ import { ContactForm } from "../../app/components/contactForm";
 import Head from "next/head";
 import classes from "./contact.module.css";
 
+export const getStaticProps = (context) => {
+	return {
+		props: {},
+	};
+};
 const Title = () => (
 	<Head>
 		<title>Contact</title>
