@@ -21,11 +21,9 @@ export function ContactForm() {
 				name="lastName"
 			/>
 			<div className={classes.buttonWrapper}>
-				<Button
-					type="submit"
-					label="Envoyer le formulaire"
-					customClass={classes.contactButton}
-				/>
+				<Button type="submit" customClass={classes.contactButton}>
+					Envoyer le formulaire
+				</Button>
 			</div>
 		</form>
 	);
