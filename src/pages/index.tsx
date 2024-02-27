@@ -1,6 +1,10 @@
-import type { Metadata } from "next";
 import Head from "next/head";
 
+export const getStaticProps = (context) => {
+	return {
+		props: {},
+	};
+};
 export default function Page() {
 	return (
 		<>

@@ -1,17 +1,17 @@
-import React, { ButtonHTMLAttributes } from "react";
+import React, { ButtonHTMLAttributes, ReactComponentElement } from "react";
 import classes from "./button.module.css";
 
 interface ButtonProps {
 	type?: ButtonHTMLAttributes<HTMLButtonElement>["type"];
 	customClass?: string;
-	label: string;
 	disabled?: boolean;
+	children: React.ReactNode;
 }
 export function Button({
 	type = "button",
 	customClass,
-	label,
 	disabled = false,
+	children,
 }: ButtonProps) {
 	return (
 		<button
@@ -19,7 +19,7 @@ export function Button({
 			type={type}
 			className={`${classes.button} ${customClass}`}
 		>
-			{label}
+			{children}
 		</button>
 	);
 }
