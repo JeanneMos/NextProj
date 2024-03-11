@@ -1,5 +1,6 @@
-import { MongoClient, ServerApiVersion } from "mongodb";
-const uri = process.env.DB_URL;
+import { MongoClient } from "mongodb";
+
+const uri = process.env.DB_URL!;
 const options = {
 	useUnifiedTopology: true,
 	useNewUrlParser: true,
@@ -13,7 +14,6 @@ if (!uri) {
 }
 
 if (process.env.NODE_ENV === "development") {
-	console.log("dev", uri);
 	if (!global._mongoClientPromise) {
 		client = new MongoClient(uri);
 		global._mongoClientPromise = client.connect();

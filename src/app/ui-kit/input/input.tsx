@@ -11,6 +11,8 @@ interface InputProps {
 	customClass?: string;
 	name: string;
 	required?: boolean;
+	changeValue?: (e) => void;
+	autocomplete?: string;
 }
 export function Input({
 	label,
@@ -22,6 +24,7 @@ export function Input({
 	customClass,
 	name,
 	required,
+	changeValue,
 	...rest
 }: InputProps) {
 	return (
@@ -35,9 +38,10 @@ export function Input({
 				name={name}
 				className={classes.input}
 				required={required}
+				onChange={changeValue}
 				{...rest}
 			/>
-			<div aria-live="polite">{error && <span>{error}</span>}</div>
+			<div aria-live="polite">{error && <span className={classes.error}>{error}</span>}</div>
 		</div>
 	);
 }
