@@ -1,7 +1,15 @@
 const nextConfig = {
-	output: "export",
+	// output: "export",
 	images: {
 		unoptimized: true,
+	},
+	async rewrites() {
+		return [
+			{
+				source: "/users",
+				destination: "/api/user",
+			},
+		];
 	},
 };
 

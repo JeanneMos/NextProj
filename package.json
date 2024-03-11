@@ -3,6 +3,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "export": "next export",
     "lint": "next lint",
     "cy:open": "cypress open",
     "e2e": "start-server-and-test dev http://localhost:3000 \"cypress open --e2e\"",
@@ -10,20 +11,30 @@
   },
   "dependencies": {
     "axe-core": "^4.8.4",
+    "bcryptjs": "^2.4.3",
+    "bcryptjs-react": "^2.4.6",
     "mongodb": "^6.3.0",
-    "next": "^14.1.0",
+    "mongoose": "^8.2.0",
+    "next": "^13.5.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@axe-core/react": "^4.8.5",
+    "@types/bcrypt": "^5.0.2",
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "20.11.19",
     "@types/react": "18.2.57",
+    "bcrypt": "^5.1.1",
     "cypress-axe": "^1.5.0",
     "postcss": "^8.4.35",
     "postcss-nested": "^6.0.1",
     "postcss-pxtorem": "^6.1.0",
     "react-axe": "^3.5.4",
     "typescript": "5.3.3"
+  },
+  "browser": {
+    "fs": false,
+    "child_process": false
   }
 }
