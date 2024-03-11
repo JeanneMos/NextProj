@@ -1,13 +1,9 @@
-import { FormEvent } from "react";
+/** use server */
+import { FormEvent, SyntheticEvent, useState } from "react";
 import { useRouter } from "next/router";
 import { LoginForm } from "@app//components/login";
 import Head from "next/head";
-
-export const getStaticProps = (context) => {
-	return {
-		props: {},
-	};
-};
+import { login } from "../../utils/login";
 
 const Title = () => (
 	<Head>
@@ -16,32 +12,26 @@ const Title = () => (
 );
 export default function LoginPage() {
 	const router = useRouter();
+	const [serverResponse, setServerResponse] = useState<200 | 404 | 401>();
 
-	async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-		event.preventDefault();
-
-		const formData = new FormData(event.currentTarget);
-		const email = formData.get("email");
-		const password = formData.get("password");
-
-		const response = await fetch("/api/auth/login", {
-			method: "POST",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify({ email, password }),
-		});
-
-		if (response.ok) {
-			router.push("/profile");
+	const onLogin = async (
+		e: SyntheticEvent,
+		data: { email: string; password: string }
+	) => {
+		e.preventDefault();
+		const response = await login(data);
+		if (response.isAdmin) {
+			router.push("/account");
 		} else {
-			// Handle errors
+			setServerResponse(response.responseStatus);
 		}
-	}
+	};
 
 	return (
 		<>
 			<Title />
 			<h1>Connexion</h1>
-			<LoginForm onSumbit={handleSubmit} />
+			<LoginForm onSubmit={onLogin} responseServer={serverResponse} />
 		</>
 	);
 }
